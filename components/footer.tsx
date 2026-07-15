@@ -1,0 +1,2 @@
+import Link from "next/link"
+export default function Footer() { return <footer className="site-footer"><div className="container footer-grid"><div><Link href="/" className="brand light-brand"><span className="brand-fruit">●</span>The Orange</Link><p>Family recipes for brighter everyday cooking.</p></div><div className="footer-links"><Link href="/gallery">All recipes</Link><Link href="/about">Our story</Link><Link href="/contact">Contact</Link></div><p className="copyright">© {new Date().getFullYear()} The Orange.</p></div></footer> }
