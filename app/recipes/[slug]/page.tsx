@@ -253,15 +253,16 @@ export function generateStaticParams() {
   return Object.keys(recipes).map((slug) => ({ slug }))
 }
 
-export default function RecipePage({ params }: { params: { slug: string } }) {
-  const recipe = recipes[params.slug as keyof typeof recipes]
+export default async function RecipePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const recipe = recipes[slug as keyof typeof recipes]
 
   if (!recipe) {
     return <div className="container mx-auto px-4 py-12 text-center">Recipe not found</div>
   }
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container recipe-detail-page">
       <Link href="/gallery" className="inline-flex items-center text-orange-500 hover:text-orange-600 mb-6">
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to gallery
